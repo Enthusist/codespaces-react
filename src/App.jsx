@@ -1,28 +1,25 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Quiz from './pages/Quiz';
+import Results from './pages/Results';
+import Pathways from './pages/Pathways';
+import PathwayDetail from './pages/PathwayDetail';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="quiz" element={<Quiz />} />
+          <Route path="results" element={<Results />} />
+          <Route path="pathways" element={<Pathways />} />
+          <Route path="pathway/:id" element={<PathwayDetail />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
